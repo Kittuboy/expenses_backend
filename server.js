@@ -5,6 +5,9 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const connectDB = require("./db");
 const expenseRoute = require("./routes/expenseRoute");
+const deleteContainerRoute = require("./routes/deleteContainer");
+const budgetRoute = require("./routes/budget");
+const backupRoute = require("./routes/backupRoutes");
 
 dotenv.config();
 
@@ -59,7 +62,7 @@ app.post("/add-expense", async (req,res) => {
 
 
 
-app.use("/api", expenseRoute);
+app.use("/api", expenseRoute, deleteContainerRoute, budgetRoute, backupRoute);
 
 
 app.listen(5000, "0.0.0.0", () => {
